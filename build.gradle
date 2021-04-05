@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.8.1'
+}
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+allure {
+    aspectjVersion = '1.9.4'
+    version = '2.13.8'
+    aspectjweaver = true
+}
+
+version '0.1'
+
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.5.4'
+    compile 'com.codeborne:selenide:5.18.0'
+    compile group: 'org.awaitility', name: 'awaitility', version: '4.0.3'
+    compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.13.8'
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-java-annotations', version: '1.5.4'
+}
+
+test {
+    useTestNG() {
+        dependsOn cleanTest
+        suites "/src/test/resources/testng.xml"
+    }
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class" // whatever Ant pattern matches your test class files
+}
+
+sourceCompatibility = 1.8
+

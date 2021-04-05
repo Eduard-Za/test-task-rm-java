@@ -1,0 +1,16 @@
+build/*
+gradle/*
+out/*
+.gradle/*
+.idea/*
+*.txt
+*.log
+*.lock
+*.sync
+.allure/*
+target/*
+src/main/resources/chromedriver
+gradlew
+.DS_Store
+local.properties
+uitests.iml
