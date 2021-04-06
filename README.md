@@ -1,5 +1,7 @@
 # Реализация тестового задания на java
 
+Описание структуры находится https://github.com/Eduard-Za/testing-task-robomarkets-typescript
+
 Для запуска проекта необходимо запустить :
 
 ```sh 
